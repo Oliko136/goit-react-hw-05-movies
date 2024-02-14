@@ -1,0 +1,36 @@
+.MovieInfoCard {
+    display: flex;
+    gap: 50px;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3f51b5;
+}
+
+.MovieTitle {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.UserScore, 
+.Overview {
+    margin-bottom: 15px;
+}
+
+.Subtitle {
+    margin-bottom: 15px;
+}
+
+.Tagline {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+    color: #737475;
+
+}
+
+.GenreList {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}

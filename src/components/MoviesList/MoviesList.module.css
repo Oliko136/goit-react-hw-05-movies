@@ -1,0 +1,10 @@
+.MoviesList {
+   text-align: center;
+   list-style: none;
+}
+
+.MovieLink {
+    color: #000000;
+    cursor: pointer;
+    font-size: 20px;
+}

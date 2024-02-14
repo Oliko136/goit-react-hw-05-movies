@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import styles from './MovieInfoCard.module.css';
 
 const MovieInfoCard = ({ info }) => {
     const { poster_path, title, release_date, vote_average, tagline, overview, genres } = info;
@@ -10,31 +11,32 @@ const MovieInfoCard = ({ info }) => {
 
     const genreItem = genres.map(({ id, name }) => <li key={id}>{name}</li>);
     return (
-        <>
+        <div className={styles.MovieInfoCard}>
             <img
                 src={poster_path ? `https://image.tmdb.org/t/p/w300/${poster_path}` : defaultImg}
                 alt='Movie Poster' width={250} />
             
-            <h1>{title} ({releaseYear})</h1>
-            <p>User Score: {userScore}%</p>
+            <div className={styles.MovieInfo}>
+                <h1 className={styles.MovieTitle}>{title} ({releaseYear})</h1>
+                <p className={styles.UserScore}>User Score: {userScore}%</p>
 
-            <h2>Overview</h2>
-            <p>{tagline}</p>
-            <p>{overview}</p>
+                <h2 className={styles.Subtitle}>Overview</h2>
+                <p className={styles.Tagline}>{tagline}</p>
+                <p className={styles.Overview}>{overview}</p>
 
-            <h2>Genres</h2>
-            {genres?.length ?
-                <ul>{genreItem}</ul> :
-                <p>No genres available for this movie</p>}
-        
-        </>
+                <h2 className={styles.Subtitle}>Genres</h2>
+                {genres?.length ?
+                    <ul className={styles.GenreList}>{genreItem}</ul> :
+                    <p>No genres available for this movie</p>}
+            </div>
+        </div>
     )
 }
 
 MovieInfoCard.propTypes = {
     info: PropTypes.shape({
         poster_path: PropTypes.string,
-        title: PropTypes.string,
+        title: PropTypes.string.isRequired,
         release_date: PropTypes.string,
         vote_average: PropTypes.number,
         tagline: PropTypes.string,

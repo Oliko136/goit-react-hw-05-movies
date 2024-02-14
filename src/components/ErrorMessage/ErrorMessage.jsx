@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import styles from './ErrorMessage.module.css';
 
 const ErrorMessage = ({ message }) => {
     return (
-        <p>{message}</p>
+        <p className={styles.ErrorMessage}>{message}</p>
     )
 }
 

@@ -4,6 +4,7 @@ import Loader from "components/Loader/Loader";
 import ErrorMessage from "components/ErrorMessage/ErrorMessage";
 import CastCard from "./CastCard";
 import { fetchCast } from "services/movie-api";
+import styles from './Cast.module.css';
 
 const Cast = () => {
     const [cast, setCast] = useState([]);
@@ -40,7 +41,7 @@ const Cast = () => {
             {status === 'pending' && <Loader />}
             {status === 'rejected' && <ErrorMessage message={'An error occured, please try again later'} />}
             {status === 'resolved' && !cast.length && <ErrorMessage message={'No cast list available for this movie'}/>}
-            {status === 'resolved' && cast.length > 0 && <ul><CastCard cast={cast} /></ul>}
+            {status === 'resolved' && cast.length > 0 && <ul className={styles.Cast}><CastCard cast={cast} /></ul>}
         </>
         
     )

@@ -1,0 +1,8 @@
+.Review:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.ReviewAuthor {
+    margin-bottom: 10px;
+    font-weight: 700;
+}

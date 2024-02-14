@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import styles from './MoviesSearch.module.css';
 
 const MoviesSearch = ({ onSubmit }) => {
     const [query, setQuery] = useState('');
@@ -18,8 +20,9 @@ const MoviesSearch = ({ onSubmit }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.MoviesSearchForm}>
             <input
+                className={styles.MoviesSearchInput}
                 type="text"
                 name="search"
                 value={query}
@@ -27,7 +30,9 @@ const MoviesSearch = ({ onSubmit }) => {
                 autoFocus
                 placeholder="Search movies by title"
                 onChange={handleChange} />
-            <button type="submit">Search</button>
+            <button type="submit" className={styles.MoviesSearchButton}>
+                <FaSearch className={styles.MoviesSearchButtonIcon} />
+            </button>
         </form>
     )
 }

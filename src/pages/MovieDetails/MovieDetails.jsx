@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
+import Section from "components/Section/Section";
 import Loader from "components/Loader/Loader";
 import ErrorMessage from "components/ErrorMessage/ErrorMessage";
+import { IoMdArrowRoundBack } from "react-icons/io";
 import MovieInfoCard from "components/MovieInfoCard/MovieInfoCard";
 import { fetchById } from "services/movie-api";
+import styles from './MovieDetails.module.css';
 
 const MovieDetails = () => {
     const [details, setDetails] = useState({});
@@ -38,17 +41,26 @@ const MovieDetails = () => {
 
 
     return (
-        <>
-            <Link to={backLink.current}>Go back</Link>
+        <Section>
+            <Link to={backLink.current} className={styles.Backlink}>
+                <IoMdArrowRoundBack />
+                Go back
+            </Link>
             {status === 'pending' && <Loader />}
             {status === 'rejected' && <ErrorMessage message={'An error occured, please try again later'}/>}
             {status === 'resolved' && <MovieInfoCard info={details} />}
             
-            <p>Additional Information</p>
-            <Link to='cast'>Cast</Link>
-            <Link to='reviews'>Reviews</Link>
+            <ul className={styles.SubpageList}>
+                <li>
+                    <NavLink to='cast' className={styles.SubpageLink}>Cast</NavLink>
+                </li>
+                <li>
+                    <NavLink to='reviews' className={styles.SubpageLink}>Reviews</NavLink>
+                </li>
+            </ul>
+    
             <Outlet />
-        </>
+        </Section>
     )
 }
 

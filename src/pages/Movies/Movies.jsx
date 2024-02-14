@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import Section from "components/Section/Section";
 import Loader from "components/Loader/Loader";
 import ErrorMessage from "components/ErrorMessage/ErrorMessage";
 import MoviesList from "components/MoviesList/MoviesList";
@@ -41,13 +42,13 @@ const Movies = () => {
     }
 
     return (
-        <>
+        <Section>
             <MoviesSearch onSubmit={handleSearch}/>
             {status === 'pending' && <Loader />}
             {status === 'rejected' && <ErrorMessage message={'An error occured, please try again later'}/>}
             {status === 'resolved' && !searchedMovies.length && <ErrorMessage message={`Sorry, no results for ${query}. Please, enter a valid title.`}/>}
             {status === 'resolved' && searchedMovies.length > 0 && <MoviesList movies={searchedMovies} />}
-        </>
+        </Section>
         
     )
 }
